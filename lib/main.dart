@@ -1,6 +1,5 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -84,7 +83,7 @@ var selectedIndex = 0;
                   extended: constraints.maxWidth >=600,
                   destinations: [
                     NavigationRailDestination(
-                      icon: Icon(Icons.home),
+                      icon: Icon(Icons.circle_notifications),
                       label: Text('Home'),
                     ),
                     NavigationRailDestination(
