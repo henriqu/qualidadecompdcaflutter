@@ -2,6 +2,8 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
+
 void main() {
   runApp(MyApp());
 }
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'QualidadecomPDCA - Gestão de Procedimentos',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         ),
         home: MyHomePage(),
       ),
@@ -56,18 +58,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-var selectedIndex = 0;
+  var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     Widget page;
-    switch(selectedIndex){
+    switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = Home();
         break;
       case 1:
-        page = FavoritesPage();
+        page = Procedimentos();
+        break;
+      case 2:
+        page = Checklist();
+        break;
+      case 3:
+        page = Manuais();
+        break;
+      case 4:
+        page = Configuracoes();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -80,15 +90,27 @@ var selectedIndex = 0;
             children: [
               SafeArea(
                 child: NavigationRail(
-                  extended: constraints.maxWidth >=600,
+                  extended: constraints.maxWidth >= 600,
                   destinations: [
-                    NavigationRailDestination(
-                      icon: Icon(Icons.circle_notifications),
+                     NavigationRailDestination(
+                      icon: Icon(Icons.home),
                       label: Text('Home'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.favorite),
-                      label: Text('Favoritos'),
+                      icon: Icon(Icons.library_add_check),
+                      label: Text('Procedimentos'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.checklist), 
+                      label: Text('Checklist'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.library_books), 
+                      label: Text('Manuais'),
+                    ),
+                    NavigationRailDestination(
+                      icon: Icon(Icons.settings), 
+                      label: Text('Configurações'),
                     ),
                   ],
                   selectedIndex: selectedIndex,
@@ -102,18 +124,21 @@ var selectedIndex = 0;
               Expanded(
                 child: Container(
                   color: Theme.of(context).colorScheme.primaryContainer,
-                  child: page,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: page,
+                  ),
                 ),
               ),
             ],
           ),
         );
-      }
+      },
     );
   }
 }
 
-class GeneratorPage extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
@@ -128,21 +153,25 @@ class GeneratorPage extends StatelessWidget {
 
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          BigCard(pair: pair),
-          SizedBox(height: 10),
+          olausuario(context),
+          cardInformacao(context),
+          SizedBox(height: 5),
           Row(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton.icon(
                 onPressed: () {
                   appState.toggleFavorite();
                 },
+                
                 icon: Icon(icon),
-                label: Text('Like'),
+                label: Text('Curtir'),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 100),
               ElevatedButton(
                 onPressed: () {
                   appState.getNext();
@@ -155,7 +184,70 @@ class GeneratorPage extends StatelessWidget {
       ),
     );
   }
+
+  Widget olausuario(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        CircleAvatar(
+          radius: 20.0,
+          backgroundColor: Colors.grey,
+          child: Text('U'),
+        ),
+        SizedBox(width: 10),
+        Text(
+          'Olá, Victor Henrique',
+          style: TextStyle(fontSize: 12.0),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 100.0), 
+          child: Icon(
+            Icons.notifications,
+            color: Colors.black, 
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget cardInformacao(BuildContext context){
+    return Row(
+      children: <Widget>[
+        Card(
+          clipBehavior: Clip.hardEdge,
+          child: InkWell(
+            splashColor: Colors.blue.withAlpha(30),
+            onTap: (){
+              debugPrint('Content for card 1');
+            },
+            child: const SizedBox(
+              width: 250,
+              height: 150,
+              child: Text('Conteúdo do card 1'),
+            ),
+          ),
+        ),
+        const SizedBox(height: 16.0),
+        Card(
+          clipBehavior: Clip.hardEdge,
+          child: InkWell(
+            splashColor: Colors.blue.withAlpha(30),
+            onTap: (){
+              debugPrint('Card tocado');
+            },
+            child: const SizedBox(
+              width: 250,
+              height: 150,
+              child: Text('Conteúdo do card 2'),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
 }
+
+
 
 class BigCard extends StatelessWidget {
   const BigCard({
@@ -186,14 +278,14 @@ class BigCard extends StatelessWidget {
   }
 }
 
-class FavoritesPage extends StatelessWidget {
+class Procedimentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
     if (appState.favorites.isEmpty) {
       return Center(
-        child: Text('No favorites yet.'),
+        child: Text('Procedimentos'),
       );
     }
 
@@ -212,4 +304,91 @@ class FavoritesPage extends StatelessWidget {
       ],
     );
   }
+}
+
+class Checklist extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('Checklist'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
+    );
+  }
+
+} 
+
+class Manuais extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('Manuais'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
+    );
+  }
+
+} 
+
+class Configuracoes extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('Configurações'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        for (var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
+    );
+  }
+
 }
