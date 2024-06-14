@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qualidadecompdca/app_state.dart';
+import 'package:qualidadecompdca/widgtes/app_state.dart';
 
-class Checklist extends StatelessWidget{
+
+class Procedimentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
     if (appState.favorites.isEmpty) {
       return Center(
-        child: Text('Checklist'),
+        child: Text('Procedimentos'),
       );
     }
 

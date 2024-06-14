@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'screens/home.dart';
-import 'screens/procedimentos.dart';
-import 'screens/checklist.dart';
-import 'screens/manuais.dart';
-import 'screens/configuracoes.dart';
+import 'home_page.dart';
+import 'procedimentos_page.dart';
+import 'checklist_page.dart';
+import 'manuais_page.dart';
+import '../settings/settings_page.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = Manuais();
         break;
       case 4:
-        page = Configuracoes();
+        page = SettingsPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   Navigator.pop(context);
                   setState(() {
-                    selectedIndex = 2; // Altera para a página de Checklist
+                    selectedIndex = 1; // Altera para a página de Checklist
                   });
                 },
               ),
@@ -121,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   Navigator.pop(context);
                   setState(() {
-                    selectedIndex = 1; // Altera para a página de Procedimentos
+                    selectedIndex = 2; // Altera para a página de Procedimentos
                   });
                 },
               ),

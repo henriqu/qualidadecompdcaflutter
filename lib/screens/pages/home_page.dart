@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qualidadecompdca/card_example.dart';
+import 'package:qualidadecompdca/screens/pages/information_page.dart';
 
 
 class Home extends StatelessWidget {
@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           olausuario(context),
-          CardExample(),
+          Information(),
           SizedBox(height: 5),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -28,18 +28,15 @@ class Home extends StatelessWidget {
         CircleAvatar(
           radius: 20.0,
           backgroundColor: Colors.grey,
-          child: Text(
-            'U',
- 
-          ),
+          child: Text('U'),
         ),
         SizedBox(width: 10),
         Text(
           'Olá, Victor Henrique',
-          style: TextStyle(fontSize: 12.0),
+          style: TextStyle(fontSize: 15.0),
         ),
         Padding(
-          padding: EdgeInsets.only(left: 100.0), 
+          padding: EdgeInsets.only(left: 80.0), 
           child: Icon(
             Icons.notifications,
             color: Colors.black, 
@@ -48,5 +45,4 @@ class Home extends StatelessWidget {
       ],
     );
   }
-
 }
