@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 void main() => runApp(LoginApp());
 
@@ -7,7 +8,7 @@ class LoginApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login',
+      title: 'Login - QualiFlow',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: GoogleFonts.poppinsTextTheme(
@@ -38,7 +39,6 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // Imagem do topo
             ClipOval(
               child: Image.asset(
                 'assets/images/logo.jpg',
@@ -90,14 +90,12 @@ class _LoginPageState extends State<LoginPage> {
                 Checkbox(
                   value: false, 
                   onChanged: (bool? value) {
-                    // Handle remember me logic here
                   },
                 ),
                 Text('Lembre-me'),
                 Spacer(),
                 TextButton(
                   onPressed: () {
-                    // Handle forgot password functionality here
                   },
                   child: Text('Esqueceu a senha?'),
                 ),
@@ -106,10 +104,12 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                // Perform login functionality here
                 String email = _emailController.text;
                 String password = _passwordController.text;
-                // You can handle login logic here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 20.0),
@@ -122,7 +122,6 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 20.0),
             TextButton(
               onPressed: () {
-                
               },
               child: Text.rich(
                 TextSpan(

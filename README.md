@@ -11,6 +11,9 @@ A aplicação inclui as seguintes funcionalidades:
 
  Mais detalhes sobre o aplicativo podem ser vistos nos seguintes links
 
- Vídeo de Apresentação do Projeto:
- Vídeo de Demonstração do Aplicativo: 
- GitHub do Projeto: https://github.com/henriqu/qualidadecompdcaflutter
+  - Vídeo de Apresentação do Projeto:
+  - Vídeo de Demonstração do Aplicativo: 
+  - GitHub do Projeto: https://github.com/henriqu/qualidadecompdcaflutter
+  - Imagens do Projeto:
+     - Imagem da logoDetalhadoDoProjeto: https://drive.google.com/file/d/1lHO89gPu6imKh7x9Rpy0yiczpl4i720q/view?usp=sharing
+     - Imagem da logoPequenoGeral: https://drive.google.com/file/d/1FCfL2dn06QegLlfD8_a2B5klopOUyvIc/view?usp=sharing

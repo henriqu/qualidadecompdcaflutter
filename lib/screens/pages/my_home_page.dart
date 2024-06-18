@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:qualidadecompdca/creation/procedimentos/create_procedimentos_page.dart';
 import 'home_page.dart';
 import 'procedimentos_page.dart';
 import 'checklist_page.dart';
 import 'manuais_page.dart';
 import '../settings/settings_page.dart';
+import 'package:qualidadecompdca/creation/checklist/create_checklist_page.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -50,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       label: Text('Home'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.checklist), 
+                      icon: Icon(Icons.checklist),
                       label: Text('Checklist'),
                     ),
                     NavigationRailDestination(
@@ -58,11 +60,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       label: Text('Procedimentos'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.library_books), 
+                      icon: Icon(Icons.library_books),
                       label: Text('Manuais'),
                     ),
                     NavigationRailDestination(
-                      icon: Icon(Icons.settings), 
+                      icon: Icon(Icons.settings),
                       label: Text('Configurações'),
                     ),
                   ],
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Expanded(
                 child: Container(
-                  color: Theme.of(context).colorScheme.primaryContainer,
+                  color: Color(0xFFCEE8F2), // Set the background color to #CEE8F2
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: page,
@@ -87,12 +89,11 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           floatingActionButton: selectedIndex == 0 ? FloatingActionButton(
             onPressed: () {
-              // Ação do botão do menu flutuante
               _showMenu(context);
             },
             child: Icon(Icons.add),
-          )
-          : null,
+            backgroundColor: Colors.green,
+          ) : null,
         );
       },
     );
@@ -110,9 +111,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text('Checklist'),
                 onTap: () {
                   Navigator.pop(context);
-                  setState(() {
-                    selectedIndex = 1; // Altera para a página de Checklist
-                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChecklistCreationPage()),
+                  );
                 },
               ),
               ListTile(
@@ -120,9 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: Text('Procedimentos'),
                 onTap: () {
                   Navigator.pop(context);
-                  setState(() {
-                    selectedIndex = 2; // Altera para a página de Procedimentos
-                  });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProcedureForm()),
+                  );
                 },
               ),
               ListTile(

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
-import 'widgtes/app_state.dart';
+import 'package:qualidadecompdca/widgtes/app_state.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,13 +16,14 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'QualidadecomPDCA - Gestão de Procedimentos',
-        debugShowCheckedModeBanner: false,
+        title: 'QualiFlow - Gestão de Procedimentos',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white)
+          textTheme: GoogleFonts.latoTextTheme(
+            Theme.of(context).textTheme,
+          ),
         ),
-        home: MyHomePage()
+        home: MyHomePage(),
       ),
     );
   }
