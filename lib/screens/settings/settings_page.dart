@@ -1,17 +1,6 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SettingsPage(),
-    );
-  }
-}
+import 'package:qualidadecompdca/screens/auth/login_page.dart';
+import 'package:qualidadecompdca/screens/pages/about_page.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -19,15 +8,9 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Configurações'),
-        backgroundColor: Colors.transparent, // Make the app bar transparent to blend with the background image
+        backgroundColor: Colors.white,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage('https://via.placeholder.com/150'), // Replace with your image URL
-            fit: BoxFit.cover, // Make the image cover the entire container
-          ),
-        ),
         child: SingleChildScrollView(
           padding: EdgeInsets.all(16.0),
           child: Column(
@@ -56,12 +39,21 @@ class SettingsPage extends StatelessWidget {
                   leading: Icon(Icons.info),
                   title: Text('Sobre o Aplicativo'),
                   onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => AboutPage()),
+                    );
                   },
                 ),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginApp()),
+                    (Route<dynamic> route) => false,
+                  );
                 },
                 child: Text('Sair'),
               ),
@@ -72,4 +64,3 @@ class SettingsPage extends StatelessWidget {
     );
   }
 }
-

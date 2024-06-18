@@ -3,91 +3,410 @@ import 'package:flutter/material.dart';
 class Checklist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
+    return DefaultTabController(
+      length: 1,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Checklist'),
         ),
-        title: Text('Checklist'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Expanded(
-            child: GridView.builder(
-              padding: EdgeInsets.zero,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, // Quantidade de colunas
-                crossAxisSpacing: 10.0, // Espaçamento entre colunas
-                mainAxisSpacing: 10.0, // Espaçamento entre linhas
-                childAspectRatio: 1.0, // Proporção entre largura e altura dos cards
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              height: 120.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: EdgeInsets.all(20),
+                itemCount: 4,
+                itemBuilder: (BuildContext context, int index) {
+                  IconData iconData;
+                  String title;
+                  Color cardColor;
+                  switch (index) {
+                    case 0:
+                      iconData = Icons.done_all;
+                      title = 'Total';
+                      cardColor = Colors.blue;
+                      break;
+                    case 1:
+                      iconData = Icons.add;
+                      title = 'Criados';
+                      cardColor = Colors.green;
+                      break;
+                    case 2:
+                      iconData = Icons.cancel;
+                      title = 'Cancelados';
+                      cardColor = Colors.red;
+                      break;
+                    case 3:
+                      iconData = Icons.how_to_reg;
+                      title = 'Aprovados';
+                      cardColor = Colors.yellow;
+                      break;
+                    default:
+                      iconData = Icons.error;
+                      title = 'Error';
+                      cardColor = Colors.grey;
+                  }
+                  return Container(
+                    width: 190.0,
+                    margin: EdgeInsets.only(right: 10.0),
+                    child: Card(
+                      elevation: 2.0,
+                      color: cardColor, // Define a cor aqui
+                      child: ListTile(
+                        leading: Icon(iconData),
+                        title: Text(
+                          title,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
               ),
-              itemCount: 4, // Quantidade total de cards
-              itemBuilder: (BuildContext context, int index) {
-                IconData iconData;
-                String title;
-
-                // Definindo ícone e título para cada card baseado no índice
-                switch (index) {
-                  case 0:
-                    iconData = Icons.favorite;
-                    title = 'Card 1';
-                    break;
-                  case 1:
-                    iconData = Icons.star;
-                    title = 'Card 2';
-                    break;
-                  case 2:
-                    iconData = Icons.shopping_cart;
-                    title = 'Card 3';
-                    break;
-                  case 3:
-                    iconData = Icons.camera_alt;
-                    title = 'Card 4';
-                    break;
-                  default:
-                    iconData = Icons.error;
-                    title = 'Error';
-                }
-
-                return Card(
-                  elevation: 2.0,
-                  child: ListTile(
-                    leading: Icon(iconData), // Ícone dinâmico para cada card
-                    title: Text(title), // Título dinâmico para cada card
+            ),
+            
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  Card(
+                    elevation: 2.0,
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TabBar(
+                            labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                            tabs: [
+                              Tab(text: 'Criados'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          child: TabBarView(
+                            children: [
+                              ListView(
+                                children: const <Widget>[
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 1'),
+                                    subtitle: Text('Detalhes da Aba 1.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 1'),
+                                    subtitle: Text('Detalhes da Aba 1.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 1'),
+                                    subtitle: Text('Detalhes da Aba 1.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 1'),
+                                    subtitle: Text('Detalhes da Aba 1.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 1'),
+                                    subtitle: Text('Detalhes da Aba 1.'),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                // Handle button press event (e.g., filter all)
+                                print('Todos button pressed');
+                              },
+                              child: Text('Todos'),
+                            ),
+                          ],
+                         ),
+                      ],
+                    ),
                   ),
-                );
-              },
+                  Card(
+                    elevation: 2.0,
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TabBar(
+                            labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                            tabs: [
+                              Tab(text: 'Rejeitados'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          child: TabBarView(
+                            children: [
+                              ListView(
+                                children: const <Widget>[
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                // Handle button press event (e.g., filter all)
+                                print('Todos button pressed');
+                              },
+                              child: Text('Todos'),
+                            ),
+                          ],
+                         ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    elevation: 2.0,
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TabBar(
+                            labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                            tabs: [
+                              Tab(text: 'Aprovados'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          child: TabBarView(
+                            children: [
+                              ListView(
+                                children: const <Widget>[
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 3'),
+                                    subtitle: Text('Detalhes da Aba 3.'),
+                                    trailing: Icon(Icons.file_download),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 3'),
+                                    subtitle: Text('Detalhes da Aba 3.'),
+                                    trailing: Icon(Icons.file_download),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 3'),
+                                    subtitle: Text('Detalhes da Aba 3.'),
+                                    trailing: Icon(Icons.file_download),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                // Handle button press event (e.g., filter all)
+                                print('Todos button pressed');
+                              },
+                              child: Text('Todos'),
+                            ),
+                          ],
+                         ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    elevation: 2.0,
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TabBar(
+                            labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                            tabs: [
+                              Tab(text: 'Por Usuário'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 200,
+                          child: TabBarView(
+                            children: [
+                              ListView(
+                                children: const <Widget>[
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 4'),
+                                    subtitle: Text('Detalhes da Aba 4.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 4'),
+                                    subtitle: Text('Detalhes da Aba 4.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 4'),
+                                    subtitle: Text('Detalhes da Aba 4.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 4'),
+                                    subtitle: Text('Detalhes da Aba 4.'),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                // Handle button press event (e.g., filter all)
+                                print('Todos button pressed');
+                              },
+                              child: Text('Todos'),
+                            ),
+                          ],
+                         ),
+                      ],
+                    ),
+                  ),
+                  Card(
+                    elevation: 2.0,
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: TabBar(
+                            labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
+                            tabs: [
+                              Tab(text: 'Por Departamento'),
+                            ],
+                          ),
+                        ),
+                        
+                        Container(
+                          height: 200,
+                          child: TabBarView(
+                            children: [
+                              ListView(
+                                children: const <Widget>[
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                         Row(
+                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                // Handle button press event (e.g., filter all)
+                                print('Todos button pressed');
+                              },
+                              child: Text('Todos'),
+                            ),
+                          ],
+                         ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          // Card envolvendo a lista de ListTile
-          Card(
-            elevation: 2.0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: const <Widget>[
-                ListTile(
-                  leading: Icon(Icons.how_to_reg),
-                  title: Text('Aba 3'),
-                  subtitle: Text('Conteúdo da Aba 3.'),
-                ),
-                ListTile(
-                  leading: Icon(Icons.how_to_reg),
-                  title: Text('Aba 3'),
-                  subtitle: Text('Conteúdo da Aba 3.'),
-                ),
-                ListTile(
-                  leading: Icon(Icons.how_to_reg),
-                  title: Text('Aba 3'),
-                  subtitle: Text('Conteúdo da Aba 3.'),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

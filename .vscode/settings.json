@@ -3,5 +3,6 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "java.debug.settings.stepping.skipClasses": [
         
-    ]
+    ],
+    "cmake.sourceDirectory": "C:/ProjetoFlutter/qualidadecompdcaflutter/linux"
 }

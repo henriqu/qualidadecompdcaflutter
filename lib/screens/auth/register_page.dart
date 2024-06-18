@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qualidadecompdca/screens/auth/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,7 +33,6 @@ class RegisterPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Imagem do topo
               ClipOval(
                 child: Image.asset(
                   'assets/images/logo.jpg',

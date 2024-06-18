@@ -2,7 +2,7 @@ name: qualidadecompdca
 description: "Gestão de Procedimentos."
 publish_to: 'none' 
 
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -17,7 +17,9 @@ dependencies:
   fl_chart: ^0.68.0
   flutter_native_splash: ^2.4.0
   flutter_splash_screen: ^3.0.0
+  flutter_launcher_icons: "^0.13.1"
   google_sign_in: ^5.0.7
+  image_picker: ^0.8.4+4
 
 dev_dependencies:
   flutter_test:
