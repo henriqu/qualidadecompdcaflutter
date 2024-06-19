@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 class Procedimentos extends StatelessWidget {
   @override
@@ -8,6 +9,16 @@ class Procedimentos extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Procedimentos'),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => MyHomePage()), 
+                (Route<dynamic> route) => false,
+              );
+            },
+          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 class ChecklistCreationPage extends StatefulWidget {
   @override
@@ -29,11 +30,15 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
       appBar: AppBar(
         title: Text('Criar Checklist'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);  
-          },
-        ),
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => MyHomePage()), 
+                (Route<dynamic> route) => false,
+              );
+            },
+          ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 
 class ProcedureForm extends StatefulWidget {
@@ -16,6 +17,16 @@ class _ProcedureFormState extends State<ProcedureForm> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Criação de Procedimentos'),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => MyHomePage()), 
+                (Route<dynamic> route) => false,
+              );
+            },
+          ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

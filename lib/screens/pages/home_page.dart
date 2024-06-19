@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         Row(
-          children: <Widget>[
+          /**children: <Widget>[
             CircleAvatar(
               radius: 20.0,
               backgroundColor: Colors.grey,
@@ -57,16 +57,16 @@ class _HomeState extends State<Home> {
               'Olá, Victor Henrique',
               style: TextStyle(fontSize: 15.0),
             ),
-          ],
+          ],**/
         ),
-        IconButton(
+        /**IconButton(
           icon: Icon(Icons.notifications),
           onPressed: () {
             setState(() {
               _showNotifications = !_showNotifications;
             });
           },
-        ),
+        ),**/
       ],
     );
   }

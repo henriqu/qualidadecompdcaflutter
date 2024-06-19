@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qualidadecompdca/screens/auth/login_page.dart';
 import 'package:qualidadecompdca/screens/pages/about_page.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -9,6 +10,16 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Configurações'),
         backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()), 
+              (Route<dynamic> route) => false,
+            );
+          },
+        ),
       ),
       body: Container(
         child: SingleChildScrollView(
