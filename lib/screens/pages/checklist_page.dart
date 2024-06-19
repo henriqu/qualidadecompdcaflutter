@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 class Checklist extends StatelessWidget {
   @override
@@ -8,6 +9,16 @@ class Checklist extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Checklist'),
+            leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(builder: (context) => MyHomePage()), 
+                (Route<dynamic> route) => false,
+              );
+            },
+          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -26,7 +37,7 @@ class Checklist extends StatelessWidget {
                     case 0:
                       iconData = Icons.done_all;
                       title = 'Total';
-                      cardColor = Colors.blue;
+                      cardColor = Color.fromRGBO(35, 219, 105, 86);
                       break;
                     case 1:
                       iconData = Icons.add;
