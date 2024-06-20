@@ -21,7 +21,34 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
       _departamentoSelecionado = 'Recursos Humanos';
       _itensVerificacao = '';
     });
-    Navigator.pop(context); 
+    Navigator.pop(context);
+  }
+
+  void _mostrarConfirmacaoCancelamento() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Cancelar'),
+          content: Text('Tem certeza que deseja cancelar essas alterações?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Fecha o diálogo
+                _limparFormulario(); // Limpa o formulário e volta para a página inicial
+              },
+              child: Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Fecha o diálogo
+              },
+              child: Text('Continuar Editando'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -30,15 +57,11 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
       appBar: AppBar(
         title: Text('Criar Checklist'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => MyHomePage()), 
-                (Route<dynamic> route) => false,
-              );
-            },
-          ),
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            _mostrarConfirmacaoCancelamento();
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -113,17 +136,30 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
-                    onPressed: _limparFormulario,
-                    child: Text('Cancelar'),
+                    onPressed: _mostrarConfirmacaoCancelamento,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
+                    ),
+                    child: Text(
+                      'Cancelar',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       _salvarDados();
                     },
-                    child: Text('Salvar'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                    child: Text(
+                      'Salvar',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
               ),

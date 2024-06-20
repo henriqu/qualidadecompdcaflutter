@@ -2,7 +2,7 @@ name: qualidadecompdca
 description: "Gestão de Procedimentos."
 publish_to: 'none' 
 
-version: 1.0.1+1
+version: 1.0.0+3
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
@@ -17,7 +17,6 @@ dependencies:
   fl_chart: ^0.68.0
   flutter_native_splash: ^2.4.0
   flutter_splash_screen: ^3.0.0
-  flutter_launcher_icons: "^0.13.1"
   google_sign_in: ^5.0.7
   image_picker: ^0.8.4+4
 
@@ -25,8 +24,33 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: "^0.13.1"
+
+flutter_native_splash:
+  #color: "#42a5f5" # Definir a cor de fundo para a tela de splash.
+  image: assets/images/logo.jpg # Caminho para a imagem da tela de splash.
+  android: true # Gerar tela de splash para Android.
+  ios: true # Gerar tela de splash para iOS.
 
 flutter:
   uses-material-design: true
   assets:
     - assets/images/logo.jpg
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icon/icon.jpg"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "assets/icon/icon.jpg"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "assets/icon/icon.jpg"

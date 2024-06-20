@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:qualidadecompdca/screens/auth/login_page.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 import 'package:qualidadecompdca/widgtes/app_state.dart';
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             Theme.of(context).textTheme,
           ),
         ),
-        home: LoginApp(),
+        home: MyHomePage(),
       ),
     );
   }

@@ -162,15 +162,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   onSelected: (item) => onSelected(context, item),
                   itemBuilder: (context) => [
                     PopupMenuItem<int>(value: 0, child: Text('Perfil')),
-                    PopupMenuItem<int>(value: 1, child: Text('My SimpleTasks')),
+                    //PopupMenuItem<int>(value: 1, child: Text('My SimpleTasks')),
                     PopupMenuDivider(),
-                    PopupMenuItem<int>(value: 2, child: Text('Painel')),
-                    PopupMenuItem<int>(value: 3, child: Text('Central de atendimento')),
-                    PopupMenuItem<int>(value: 4, child: Text('Quadros Rápidos')),
-                    PopupMenuItem<int>(value: 5, child: Text('Navegador de Pendência')),
-                    PopupMenuItem<int>(value: 6, child: Text('Tempo')),
-                    PopupMenuItem<int>(value: 7, child: Text('Insight')),
-                    PopupMenuDivider(),
+                    //PopupMenuItem<int>(value: 2, child: Text('Painel')),
+                    //PopupMenuItem<int>(value: 3, child: Text('Central de atendimento')),
+                    //PopupMenuItem<int>(value: 4, child: Text('Quadros Rápidos')),
+                    //PopupMenuItem<int>(value: 5, child: Text('Navegador de Pendência')),
+                    //PopupMenuItem<int>(value: 6, child: Text('Tempo')),
+                    //PopupMenuItem<int>(value: 7, child: Text('Insight')),
+                    //PopupMenuDivider(),
                     PopupMenuItem<int>(value: 8, child: Text('Sair do Sistema')),
                   ],
                 ),
@@ -193,12 +193,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     otherAccountsPictures: <Widget>[
-                      IconButton(
+                      /**IconButton(
                         icon: Icon(Icons.logout),
                         onPressed: () {
                           // Função para sair
                         },
-                      ),
+                      ),**/
                     ],
                   ),
                   ListTile(
@@ -285,16 +285,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         },
                       ),
                     ],
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.library_books),
-                    title: Text('Manuais'),
-                    onTap: () {
-                      Navigator.pop(context);
-                      setState(() {
-                        selectedIndex = 3;
-                      });
-                    },
                   ),
                   ListTile(
                     leading: Icon(Icons.settings),
@@ -422,6 +412,16 @@ class UserProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Perfil do Usuário'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()), 
+              (Route<dynamic> route) => false,
+            );
+          },
+        ),
       ),
       body: Column(
         children: <Widget>[

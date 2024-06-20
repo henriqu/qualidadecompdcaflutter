@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart'; // Certifique-se de que este import esteja correto
 
 class CriarManualPage extends StatefulWidget {
   @override
@@ -26,11 +27,60 @@ class _CriarManualPageState extends State<CriarManualPage> {
     'Vendas',
   ];
 
+  void _showCancelConfirmationDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Cancelar'),
+          content: Text('Tem certeza que deseja cancelar essas alterações?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                // Limpar os campos
+                _formKey.currentState!.reset();
+                _nomeManualController.clear();
+                _cnpjCpfController.clear();
+                _nomeClienteController.clear();
+                _referenciaNormativaController.clear();
+                _objetivosController.clear();
+                setState(() {
+                  _departamentoSelecionado = null;
+                });
+
+                // Navegar de volta para a página inicial
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()), 
+                  (Route<dynamic> route) => false,
+                );
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.red,
+              ),
+              child: Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Continuar Editando'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Criar Procedimento'),
+        title: Text('Criar Manual'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: _showCancelConfirmationDialog,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -116,19 +166,16 @@ class _CriarManualPageState extends State<CriarManualPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        // Limpar os campos
-                        _formKey.currentState!.reset();
-                        _nomeManualController.clear();
-                        _cnpjCpfController.clear();
-                        _nomeClienteController.clear();
-                        _referenciaNormativaController.clear();
-                        _objetivosController.clear();
-                        setState(() {
-                          _departamentoSelecionado = null;
-                        });
-                      },
-                      child: Text('Cancelar'),
+                      onPressed: _showCancelConfirmationDialog,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      child: Text(
+                        'Cancelar',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -140,7 +187,15 @@ class _CriarManualPageState extends State<CriarManualPage> {
                           );
                         }
                       },
-                      child: Text('Salvar'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                      ),
+                      child: Text(
+                        'Salvar',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
                     ),
                   ],
                 ),
