@@ -32,26 +32,32 @@ class Procedimentos extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   IconData iconData;
                   String title;
+                  Color cardColor;
                   switch (index) {
                     case 0:
                       iconData = Icons.done_all;
                       title = 'Total';
+                      cardColor = Color.fromRGBO(35, 219, 105, 86);
                       break;
                     case 1:
                       iconData = Icons.add;
                       title = 'Criados';
+                      cardColor = Colors.green;
                       break;
                     case 2:
                       iconData = Icons.cancel;
                       title = 'Cancelados';
+                      cardColor = Colors.red;
                       break;
                     case 3:
                       iconData = Icons.how_to_reg;
                       title = 'Aprovados';
+                      cardColor = Colors.yellow;
                       break;
                     default:
                       iconData = Icons.error;
                       title = 'Error';
+                      cardColor = Colors.grey;
                   }
 
                   return Container(
@@ -59,6 +65,7 @@ class Procedimentos extends StatelessWidget {
                     margin: EdgeInsets.only(right: 10.0), // Espaçamento entre os cards
                     child: Card(
                       elevation: 2.0,
+                      color: cardColor,
                       child: ListTile(
                         leading: Icon(iconData), // Ícone dinâmico para cada card
                         title: Text(

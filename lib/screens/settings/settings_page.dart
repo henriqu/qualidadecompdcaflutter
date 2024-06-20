@@ -39,7 +39,16 @@ class SettingsPage extends StatelessWidget {
               Card(
                 child: ListTile(
                   leading: Icon(Icons.person),
-                  title: Text('Perfil'),
+                  title: Text('Cadastro Departamento'),
+                  onTap: () {
+                  },
+                ),
+              ),
+              SizedBox(height: 10),
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.person),
+                  title: Text('Cadastro Departamento'),
                   onTap: () {
                   },
                 ),

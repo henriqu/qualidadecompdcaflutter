@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
-
 class ProcedureForm extends StatefulWidget {
   @override
   _ProcedureFormState createState() => _ProcedureFormState();
@@ -12,21 +11,49 @@ class _ProcedureFormState extends State<ProcedureForm> {
   String? _department;
   List<String> _departments = ['Financeiro', 'Recursos Humanos', 'TI', 'Marketing'];
 
+  void _confirmCancel() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Cancelar'),
+          content: Text('Tem certeza que deseja cancelar estas alterações?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Fecha o diálogo
+                _formKey.currentState!.reset(); // Limpa o formulário
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
+                  (Route<dynamic> route) => false,
+                );
+              },
+              child: Text('Cancelar'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Fecha o diálogo
+              },
+              child: Text('Continuar Editando'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Criação de Procedimentos'),
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => MyHomePage()), 
-                (Route<dynamic> route) => false,
-              );
-            },
-          ),
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            _confirmCancel();
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -135,11 +162,16 @@ class _ProcedureFormState extends State<ProcedureForm> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      _formKey.currentState!.reset();
+                      _confirmCancel();
                     },
-                    child: Text('Cancelar'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.red,
+                    ),
+                    child: Text(
+                      'Cancelar',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                   ElevatedButton(
@@ -148,7 +180,15 @@ class _ProcedureFormState extends State<ProcedureForm> {
                         // Processar dados do formulário
                       }
                     },
-                    child: Text('Salvar'),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                    ),
+                    child: Text(
+                      'Salvar',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
                   ),
                 ],
               ),
