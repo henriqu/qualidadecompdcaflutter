@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class AboutPage extends StatelessWidget {
-  final String appVersion = '1.0.0'; // Versão do aplicativo
+  final String appVersion = '1.0.0';
 
   @override
   Widget build(BuildContext context) {

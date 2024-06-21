@@ -64,7 +64,7 @@ class Checklist extends StatelessWidget {
                     margin: EdgeInsets.only(right: 10.0),
                     child: Card(
                       elevation: 2.0,
-                      color: cardColor, // Define a cor aqui
+                      color: cardColor,
                       child: ListTile(
                         leading: Icon(iconData),
                         title: Text(
@@ -106,29 +106,19 @@ class Checklist extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
+                                    leading: Icon(Icons.add),
+                                    title: Text('Checklist de Segurança'),
+                                    subtitle: Text('Segurança do Trabalho'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
+                                    leading: Icon(Icons.add),
+                                    title: Text('Checklist de Qualidade'),
+                                    subtitle: Text('Controle de Qualidade'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
-                                  ),
-                                  ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
-                                  ),
-                                  ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
+                                    leading: Icon(Icons.add),
+                                    title: Text('Procedimento de Inspeção Final'),
+                                    subtitle: Text('Controle de Qualidade'),
                                   ),
                                 ],
                               ),
@@ -136,11 +126,10 @@ class Checklist extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
                               onPressed: () {
-                                // Handle button press event (e.g., filter all)
                                 print('Todos button pressed');
                               },
                               child: Text('Todos'),
@@ -172,27 +161,27 @@ class Checklist extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
@@ -202,11 +191,10 @@ class Checklist extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
                               onPressed: () {
-                                // Handle button press event (e.g., filter all)
                                 print('Todos button pressed');
                               },
                               child: Text('Todos'),
@@ -271,11 +259,10 @@ class Checklist extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          mainAxisAlignment: MainAxisAlignment.end, 
                           children: [
                             TextButton(
                               onPressed: () {
-                                // Handle button press event (e.g., filter all)
                                 print('Todos button pressed');
                               },
                               child: Text('Todos'),
@@ -307,22 +294,22 @@ class Checklist extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.person),
                                     title: Text('Conteúdo da Aba 4'),
                                     subtitle: Text('Detalhes da Aba 4.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.person),
                                     title: Text('Conteúdo da Aba 4'),
                                     subtitle: Text('Detalhes da Aba 4.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.person),
                                     title: Text('Conteúdo da Aba 4'),
                                     subtitle: Text('Detalhes da Aba 4.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.person),
                                     title: Text('Conteúdo da Aba 4'),
                                     subtitle: Text('Detalhes da Aba 4.'),
                                   ),
@@ -332,11 +319,10 @@ class Checklist extends StatelessWidget {
                           ),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
                               onPressed: () {
-                                // Handle button press event (e.g., filter all)
                                 print('Todos button pressed');
                               },
                               child: Text('Todos'),
@@ -369,27 +355,27 @@ class Checklist extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),
@@ -399,11 +385,10 @@ class Checklist extends StatelessWidget {
                           ),
                         ),
                          Row(
-                          mainAxisAlignment: MainAxisAlignment.end, // Align to the end
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             TextButton(
                               onPressed: () {
-                                // Handle button press event (e.g., filter all)
                                 print('Todos button pressed');
                               },
                               child: Text('Todos'),

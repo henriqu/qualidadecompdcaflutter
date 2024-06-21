@@ -140,18 +140,18 @@ class Information extends StatelessWidget {
                               children: const <Widget>[
                                 ListTile(
                                   leading: Icon(Icons.pending),
-                                  title: Text('Admissão Pessoal'),
-                                  subtitle: Text('DPES.'),
+                                  title: Text('Checklist de Segurança'),
+                                  subtitle: Text('Segurança do Trabalho.'),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.pending),
-                                  title: Text('Admissão Pessoal'),
-                                  subtitle: Text('DPES.'),
+                                  title: Text('Procedimento de Evacuação'),
+                                  subtitle: Text('Segurança do Trabalho'),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.pending),
-                                  title: Text('Admissão Pessoal'),
-                                  subtitle: Text('DPES.'),
+                                  title: Text('Checklist de Qualidade'),
+                                  subtitle: Text('Controle de Qualidade'),
                                 ),
                               ],
                             ),
@@ -160,18 +160,18 @@ class Information extends StatelessWidget {
                               children: const <Widget>[
                                 ListTile(
                                   leading: Icon(Icons.check_circle),
-                                  title: Text('Aba 2'),
-                                  subtitle: Text('Conteúdo da Aba 2.'),
+                                  title: Text('Procedimento de Inspeção Final'),
+                                  subtitle: Text('Controle de Qualidade'),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.check_circle),
-                                  title: Text('Aba 2'),
-                                  subtitle: Text('Conteúdo da Aba 2.'),
+                                  title: Text('Checklist de TI'),
+                                  subtitle: Text('Tecnologia da Informação'),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.check_circle),
-                                  title: Text('Aba 2'),
-                                  subtitle: Text('Conteúdo da Aba 2.'),
+                                  title: Text('Procedimento de Backup de Dados'),
+                                  subtitle: Text('Tecnologia da Informação'),
                                 ),
                               ],
                             ),
@@ -180,20 +180,20 @@ class Information extends StatelessWidget {
                               children: const <Widget>[
                                 ListTile(
                                   leading: Icon(Icons.how_to_reg),
-                                  title: Text('Aba 3'),
-                                  subtitle: Text('Conteúdo da Aba 3.'),
+                                  title: Text('Registro de Reclamações'),
+                                  subtitle: Text('Atendimento ao Cliente'),
                                   trailing: Icon(Icons.file_download),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.how_to_reg),
-                                  title: Text('Aba 3'),
-                                  subtitle: Text('Conteúdo da Aba 3.'),
+                                  title: Text('Treinamento de Atendimento'),
+                                  subtitle: Text('Atendimento ao Cliente'),
                                   trailing: Icon(Icons.file_download),
                                 ),
                                 ListTile(
                                   leading: Icon(Icons.how_to_reg),
-                                  title: Text('Aba 3'),
-                                  subtitle: Text('Conteúdo da Aba 3.'),
+                                  title: Text('Manutenção Preventiva'),
+                                  subtitle: Text('Manutenção'),
                                   trailing: Icon(Icons.file_download),
                                 ),
                               ],

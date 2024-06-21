@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qualidadecompdca/screens/pages/my_home_page.dart'; // Certifique-se de que este import esteja correto
+import 'package:qualidadecompdca/screens/pages/my_home_page.dart';
 
 class CriarManualPage extends StatefulWidget {
   @override
@@ -9,7 +9,6 @@ class CriarManualPage extends StatefulWidget {
 class _CriarManualPageState extends State<CriarManualPage> {
   final _formKey = GlobalKey<FormState>();
 
-  // Controladores de texto
   final TextEditingController _nomeManualController = TextEditingController();
   final TextEditingController _cnpjCpfController = TextEditingController();
   final TextEditingController _nomeClienteController = TextEditingController();
@@ -18,7 +17,6 @@ class _CriarManualPageState extends State<CriarManualPage> {
 
   String? _departamentoSelecionado;
 
-  // Lista de departamentos (Exemplo)
   final List<String> _departamentos = [
     'Financeiro',
     'Recursos Humanos',
@@ -37,7 +35,6 @@ class _CriarManualPageState extends State<CriarManualPage> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                // Limpar os campos
                 _formKey.currentState!.reset();
                 _nomeManualController.clear();
                 _cnpjCpfController.clear();
@@ -47,11 +44,9 @@ class _CriarManualPageState extends State<CriarManualPage> {
                 setState(() {
                   _departamentoSelecionado = null;
                 });
-
-                // Navegar de volta para a página inicial
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()), 
+                  MaterialPageRoute(builder: (context) => MyHomePage()),
                   (Route<dynamic> route) => false,
                 );
               },
@@ -67,6 +62,68 @@ class _CriarManualPageState extends State<CriarManualPage> {
               child: Text('Continuar Editando'),
             ),
           ],
+        );
+      },
+    );
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          child: Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Sucesso',
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      'Manual criado com sucesso',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 24),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyHomePage()),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        child: Text(
+                          'OK',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
@@ -161,7 +218,7 @@ class _CriarManualPageState extends State<CriarManualPage> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20), // Adicionando espaço extra antes dos botões
+                SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -180,11 +237,7 @@ class _CriarManualPageState extends State<CriarManualPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // Salvar os dados
-                          // Aqui você pode adicionar a lógica para salvar os dados
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Salvando dados...')),
-                          );
+                          _showSuccessDialog();
                         }
                       },
                       style: ElevatedButton.styleFrom(

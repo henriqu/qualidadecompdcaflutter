@@ -67,14 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   onSelected: (item) => onSelected(context, item),
                   itemBuilder: (context) => [
                     PopupMenuItem<int>(value: 0, child: Text('Perfil')),
-                    PopupMenuItem<int>(value: 1, child: Text('My SimpleTasks')),
-                    PopupMenuDivider(),
-                    PopupMenuItem<int>(value: 2, child: Text('Painel')),
-                    PopupMenuItem<int>(value: 3, child: Text('Central de atendimento')),
-                    PopupMenuItem<int>(value: 4, child: Text('Quadros Rápidos')),
-                    PopupMenuItem<int>(value: 5, child: Text('Navegador de Pendência')),
-                    PopupMenuItem<int>(value: 6, child: Text('Tempo')),
-                    PopupMenuItem<int>(value: 7, child: Text('Insight')),
+                    //PopupMenuItem<int>(value: 1, child: Text('My SimpleTasks')),
+                    //PopupMenuDivider(),
+                    //PopupMenuItem<int>(value: 2, child: Text('Painel')),
+                    //PopupMenuItem<int>(value: 3, child: Text('Central de atendimento')),
+                    //PopupMenuItem<int>(value: 4, child: Text('Quadros Rápidos')),
+                    //PopupMenuItem<int>(value: 5, child: Text('Navegador de Pendência')),
+                    //PopupMenuItem<int>(value: 6, child: Text('Tempo')),
+                    //PopupMenuItem<int>(value: 7, child: Text('Insight')),
                     PopupMenuDivider(),
                     PopupMenuItem<int>(value: 8, child: Text('Sair do Sistema')),
                   ],
@@ -180,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 children: <Widget>[
-                  UserAccountsDrawerHeader(
+                  /**UserAccountsDrawerHeader(
                     accountName: Text('Nome do Usuário'),
                     accountEmail: Text('Perfil'),
                     currentAccountPicture: CircleAvatar(
@@ -193,14 +193,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     otherAccountsPictures: <Widget>[
-                      /**IconButton(
+                      IconButton(
                         icon: Icon(Icons.logout),
                         onPressed: () {
                           // Função para sair
                         },
-                      ),**/
+                      ),
                     ],
-                  ),
+                  ),**/
                   ListTile(
                     leading: Icon(Icons.home),
                     title: Text('Home'),
@@ -411,7 +411,15 @@ class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil do Usuário'),
+        title: Text('Meu Perfil'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: () {
+              // Ação ao pressionar o ícone de engrenagem
+            },
+          ),
+        ],
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -424,7 +432,9 @@ class UserProfilePage extends StatelessWidget {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          SizedBox(height: 20),
           CircleAvatar(
             radius: 50,
             backgroundImage: AssetImage('assets/images/logo.jpg'), // Imagem do usuário
@@ -437,13 +447,20 @@ class UserProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 10),
           Text(
-            'Victor Henrique',
+            'Victor Henrique dos Santos Oliveira',
             style: TextStyle(fontSize: 20),
           ),
           Divider(),
           ListTile(
+            leading: Icon(Icons.person),
+            title: Text('Meu Cadastro'),
+            onTap: () {
+              // Ação ao pressionar "Meu Cadastro"
+            },
+          ),
+          ListTile(
             leading: Icon(Icons.logout),
-            title: Text('Sair'),
+            title: Text('Encerrar sessão'),
             onTap: () {
               Navigator.pushAndRemoveUntil(
                 context,
@@ -451,9 +468,11 @@ class UserProfilePage extends StatelessWidget {
                 (Route<dynamic> route) => false,
               );
             },
-          )
+          ),
         ],
       ),
     );
   }
 }
+
+
