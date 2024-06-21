@@ -59,33 +59,30 @@ class Manuais extends StatelessWidget {
                       title = 'Error';
                       cardColor = Colors.grey;
                   }
-
                   return Container(
-                    width: 180.0, // Largura fixa para os cards
-                    margin: EdgeInsets.only(right: 10.0), // Espaçamento entre os cards
+                    width: 180.0, 
+                    margin: EdgeInsets.only(right: 10.0), 
                     child: Card(
                       elevation: 2.0,
                       color: cardColor,
                       child: ListTile(
-                        leading: Icon(iconData), // Ícone dinâmico para cada card
+                        leading: Icon(iconData), 
                         title: Text(
                           title,
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
-                          ), // Título dinâmico para cada card
+                          ), 
                       ),
                     ),
                   );
                 },
               ),
             ),
-            // Cards with ListTiles and Tabs below the horizontal list of cards
             Expanded(
               child: ListView(
                 children: <Widget>[
-                  // Card 1 with Tabs
                   Card(
                     elevation: 2.0,
                     margin: EdgeInsets.all(10.0),
@@ -108,19 +105,19 @@ class Manuais extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
+                                    leading: Icon(Icons.add),
+                                    title: Text('Manual de Boas Práticas de Fabricação'),
+                                    subtitle: Text('Controle de Qualidade'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
+                                    leading: Icon(Icons.add),
+                                    title: Text('Manual de Uso de Software'),
+                                    subtitle: Text('Tecnologia da Informação'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
-                                    title: Text('Conteúdo da Aba 1'),
-                                    subtitle: Text('Detalhes da Aba 1.'),
+                                    leading: Icon(Icons.add),
+                                    title: Text('Manual de Treinamento de Atendimento'),
+                                    subtitle: Text('Atendimento ao Cliente'),
                                   ),
                                 ],
                               ),
@@ -153,17 +150,27 @@ class Manuais extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.cancel),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.cancel),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.cancel),
                                     title: Text('Conteúdo da Aba 2'),
                                     subtitle: Text('Detalhes da Aba 2.'),
                                   ),
@@ -215,6 +222,16 @@ class Manuais extends StatelessWidget {
                                     subtitle: Text('Detalhes da Aba 3.'),
                                     trailing: Icon(Icons.file_download),
                                   ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.how_to_reg),
+                                    title: Text('Conteúdo da Aba 2'),
+                                    subtitle: Text('Detalhes da Aba 2.'),
+                                  ),
                                 ],
                               ),
                             ],
@@ -246,12 +263,22 @@ class Manuais extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.person),
                                     title: Text('Conteúdo da Aba 4'),
                                     subtitle: Text('Detalhes da Aba 4.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.person),
+                                    title: Text('Conteúdo da Aba 4'),
+                                    subtitle: Text('Detalhes da Aba 4.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.person),
+                                    title: Text('Conteúdo da Aba 4'),
+                                    subtitle: Text('Detalhes da Aba 4.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.person),
                                     title: Text('Conteúdo da Aba 4'),
                                     subtitle: Text('Detalhes da Aba 4.'),
                                   ),
@@ -286,12 +313,27 @@ class Manuais extends StatelessWidget {
                               ListView(
                                 children: const <Widget>[
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),
                                   ListTile(
-                                    leading: Icon(Icons.how_to_reg),
+                                    leading: Icon(Icons.apartment),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.apartment),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.apartment),
+                                    title: Text('Conteúdo da Aba 5'),
+                                    subtitle: Text('Detalhes da Aba 5.'),
+                                  ),
+                                  ListTile(
+                                    leading: Icon(Icons.apartment),
                                     title: Text('Conteúdo da Aba 5'),
                                     subtitle: Text('Detalhes da Aba 5.'),
                                   ),

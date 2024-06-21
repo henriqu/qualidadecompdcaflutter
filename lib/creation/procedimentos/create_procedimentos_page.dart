@@ -21,8 +21,8 @@ class _ProcedureFormState extends State<ProcedureForm> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
-                _formKey.currentState!.reset(); // Limpa o formulário
+                Navigator.of(context).pop(); 
+                _formKey.currentState!.reset(); 
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => MyHomePage()),
@@ -33,9 +33,29 @@ class _ProcedureFormState extends State<ProcedureForm> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
+                Navigator.of(context).pop(); 
               },
               child: Text('Continuar Editando'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sucesso'),
+          content: Text('Procedimento criado com sucesso.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); 
+              },
+              child: Text('OK'),
             ),
           ],
         );
@@ -62,10 +82,10 @@ class _ProcedureFormState extends State<ProcedureForm> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Nome do Checklist'),
+                decoration: InputDecoration(labelText: 'Nome do Procedimento'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Por favor, insira o nome do checklist';
+                    return 'Por favor, insira o nome do procedimento';
                   }
                   return null;
                 },
@@ -177,7 +197,7 @@ class _ProcedureFormState extends State<ProcedureForm> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        // Processar dados do formulário
+                        _showSuccessDialog();
                       }
                     },
                     style: ElevatedButton.styleFrom(

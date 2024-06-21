@@ -13,6 +13,8 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
   String _departamentoSelecionado = 'Recursos Humanos';
   String _itensVerificacao = '';
 
+  final _formKey = GlobalKey<FormState>();
+
   void _limparFormulario() {
     setState(() {
       _nomeChecklist = '';
@@ -34,14 +36,14 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
-                _limparFormulario(); // Limpa o formulário e volta para a página inicial
+                Navigator.of(context).pop(); 
+                _limparFormulario(); 
               },
               child: Text('Cancelar'),
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Fecha o diálogo
+                Navigator.of(context).pop(); 
               },
               child: Text('Continuar Editando'),
             ),
@@ -49,6 +51,63 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
         );
       },
     );
+  }
+
+  void _mostrarMensagemSucesso() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sucesso'),
+          content: Text('Checklist criado com sucesso!'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                _limparFormulario(); 
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _mostrarMensagemErro(String mensagem) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Erro'),
+          content: Text(mensagem),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _salvarDados() {
+    if (_nomeChecklist.isEmpty || _cnpjCpf.isEmpty || _nomeCliente.isEmpty || _itensVerificacao.isEmpty) {
+      _mostrarMensagemErro('Todos os campos devem ser preenchidos.');
+      return;
+    }
+
+    print('Dados salvos:');
+    print('Nome do Checklist: $_nomeChecklist');
+    print('CNPJ/CPF: $_cnpjCpf');
+    print('Nome do Cliente: $_nomeCliente');
+    print('Departamento: $_departamentoSelecionado');
+    print('Itens de Verificação: $_itensVerificacao');
+
+    _mostrarMensagemSucesso();
   }
 
   @override
@@ -66,118 +125,136 @@ class _ChecklistCreationPageState extends State<ChecklistCreationPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextField(
-                decoration: InputDecoration(labelText: 'Nome do Checklist'),
-                onChanged: (value) {
-                  setState(() {
-                    _nomeChecklist = value;
-                  });
-                },
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Logo (upload)'),
-                onChanged: (value) {
-                },
-              ),
-              SizedBox(height: 10),
-              TextField(
-                decoration: InputDecoration(labelText: 'CNPJ/CPF'),
-                onChanged: (value) {
-                  setState(() {
-                    _cnpjCpf = value;
-                  });
-                },
-              ),
-              SizedBox(height: 10),
-              TextField(
-                decoration: InputDecoration(labelText: 'Nome do Cliente'),
-                onChanged: (value) {
-                  setState(() {
-                    _nomeCliente = value;
-                  });
-                },
-              ),
-              SizedBox(height: 10),
-              DropdownButtonFormField(
-                value: _departamentoSelecionado,
-                items: [
-                  'Recursos Humanos',
-                  'Tecnologia da Informação',
-                  'Financeiro',
-                ].map((String value) {
-                  return DropdownMenuItem(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (value) {
-                  setState(() {
-                    _departamentoSelecionado = value.toString();
-                  });
-                },
-                decoration: InputDecoration(labelText: 'Departamento'),
-              ),
-              SizedBox(height: 10),
-              TextFormField(
-                maxLines: 5,
-                decoration: InputDecoration(labelText: 'Itens de Verificação'),
-                onChanged: (value) {
-                  setState(() {
-                    _itensVerificacao = value;
-                  });
-                },
-              ),
-              SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: _mostrarConfirmacaoCancelamento,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
-                    ),
-                    child: Text(
-                      'Cancelar',
-                      style: TextStyle(
-                        color: Colors.black,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Nome do Checklist'),
+                  onChanged: (value) {
+                    setState(() {
+                      _nomeChecklist = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo obrigatório';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Logo (upload)'),
+                  onChanged: (value) {
+                  },
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'CNPJ/CPF'),
+                  onChanged: (value) {
+                    setState(() {
+                      _cnpjCpf = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo obrigatório';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Nome do Cliente'),
+                  onChanged: (value) {
+                    setState(() {
+                      _nomeCliente = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo obrigatório';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 10),
+                DropdownButtonFormField(
+                  value: _departamentoSelecionado,
+                  items: [
+                    'Recursos Humanos',
+                    'Tecnologia da Informação',
+                    'Financeiro',
+                  ].map((String value) {
+                    return DropdownMenuItem(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      _departamentoSelecionado = value.toString();
+                    });
+                  },
+                  decoration: InputDecoration(labelText: 'Departamento'),
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  maxLines: 5,
+                  decoration: InputDecoration(labelText: 'Itens de Verificação'),
+                  onChanged: (value) {
+                    setState(() {
+                      _itensVerificacao = value;
+                    });
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Campo obrigatório';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _mostrarConfirmacaoCancelamento,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      child: Text(
+                        'Cancelar',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      _salvarDados();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                    ),
-                    child: Text(
-                      'Salvar',
-                      style: TextStyle(
-                        color: Colors.black,
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          _salvarDados();
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                      ),
+                      child: Text(
+                        'Salvar',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
-  }
-
-  void _salvarDados() {
-    // Implemente aqui a lógica para salvar os dados
-    // Pode ser feito utilizando Firebase, SQLite, API REST, etc.
-    print('Dados salvos:');
-    print('Nome do Checklist: $_nomeChecklist');
-    print('CNPJ/CPF: $_cnpjCpf');
-    print('Nome do Cliente: $_nomeCliente');
-    print('Departamento: $_departamentoSelecionado');
-    print('Itens de Verificação: $_itensVerificacao');
   }
 }
