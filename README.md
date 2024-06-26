@@ -1,4 +1,4 @@
-QualidadecomPDCA - Gestáo de Procedimentos
+QualiFlow - Gestáo de Procedimentos
 
 Este projeto visa auxiliar os usuários de procedimentos, checklists e manuais, fornecendo informações prontamente acessíveis.
 
